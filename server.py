@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import requests
 import bs4
+from os import environ
 
 
 def get_jobs_list(jobs_URL):
@@ -47,7 +48,8 @@ def get_posts_list(url):
 app = Flask(__name__)
 
 # CREATE DATABASE
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database_jobs&posts.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get(
+    'DATABASE_URL') or "sqlite:///database_jobs&posts.db"
 # Optional: But it will silence the deprecation warning in the console.
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
