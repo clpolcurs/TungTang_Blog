@@ -101,7 +101,7 @@ class Post_latest(db.Model):
 
 @app.route("/")
 def index():
-    jobs_URL = 'https://api.github.com/repos/awesome-jobs/vietnam/issues'
+    """jobs_URL = 'https://api.github.com/repos/awesome-jobs/vietnam/issues'
     data = get_jobs_list(jobs_URL)
     for number, title, html_url in data:
         description = get_jobs_details(html_url)
@@ -150,7 +150,7 @@ def index():
             latest_posts = Post_latest(
                 label=label, title=title, url=post_url)
             db.session.add(latest_posts)
-            db.session.commit()
+            db.session.commit()"""
 
     return render_template("index.html")
 
