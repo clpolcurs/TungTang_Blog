@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate, migrate
+from flask_migrate import Migrate
 import requests
 import bs4
 from os import environ
