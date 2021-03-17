@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 import requests
 import bs4
 from os import environ
@@ -47,14 +46,14 @@ def get_posts_list(url):
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = environ.get('SECRET_KEY')
 
 # CREATE DATABASE
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get(
-    'DATABASE_URL') or "sqlite:///database_jobs&posts.db"
+    "DATABASE_URL", "sqlite:///database_jobs&posts.db")
 # Optional: But it will silence the deprecation warning in the console.
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
 
 
 class Job(db.Model):
