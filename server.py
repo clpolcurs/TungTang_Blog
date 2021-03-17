@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 import requests
 import bs4
@@ -50,7 +50,7 @@ app.config['SECRET_KEY'] = environ.get('SECRET_KEY')
 
 # CREATE DATABASE
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get(
-    "DATABASE_URL", "sqlite:///database_jobs&posts.db")
+    "DATABASE_URL", "sqlite:///database_jobs_posts.db")
 # Optional: But it will silence the deprecation warning in the console.
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
